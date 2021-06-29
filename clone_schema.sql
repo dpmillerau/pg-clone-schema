@@ -955,9 +955,9 @@ BEGIN
   LOOP
     BEGIN
       cnt := cnt + 1;
-      -- RAISE NOTICE 'ddl=%', arec.dcl;
+      -- RAISE NOTICE 'ddl=%', arec.tbl_dcl;
       IF arec.relkind = 'f' THEN
-        RAISE WARNING 'Foreign tables are not currently implemented, so skipping privs for them. ddl=%', arec.tbl_ddl;
+        RAISE WARNING 'Foreign tables are not currently implemented, so skipping privs for them. ddl=%', arec.tbl_dcl;
       ELSE
           IF ddl_only THEN
               RAISE INFO '%', arec.tbl_dcl;
