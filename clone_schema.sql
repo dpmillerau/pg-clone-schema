@@ -970,7 +970,7 @@ BEGIN
   RAISE NOTICE ' TABLE PRIVS cloned: %', LPAD(cnt::text, 5, ' ');
 
   -- Set the search_path back to what it was before
-  EXECUTE 'SET search_path = ' || src_path_old;
+  EXECUTE 'SET search_path = ' || quote_literal(src_path_old);
 
   EXCEPTION
      WHEN others THEN
@@ -980,7 +980,7 @@ BEGIN
          v_ret := 'line=' || v_diag6 || '. '|| v_diag4 || '. ' || v_diag1;
          RAISE EXCEPTION 'Action: %  Diagnostics: %',action, v_ret;
          -- Set the search_path back to what it was before
-         EXECUTE 'SET search_path = ' || src_path_old;
+         EXECUTE 'SET search_path = ' || quote_literal(src_path_old);
          RETURN;
      END;
 
